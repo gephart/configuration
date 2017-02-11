@@ -9,6 +9,10 @@ final class Configuration
 
     public function get(string $key)
     {
+        if (empty($this->configuration)) {
+            $this->parseFiles();
+        }
+
         if (empty($this->configuration[$key])) {
             throw new \Exception("Configuration: '$key' missing in configuration.");
         }
@@ -25,7 +29,7 @@ final class Configuration
         $this->directory = $directory;
     }
 
-    public function parseFiles()
+    private function parseFiles()
     {
         if (empty($this->directory)) {
             throw new \Exception("Configuration: Base directory is not set.");

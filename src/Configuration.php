@@ -29,6 +29,11 @@ final class Configuration
         $this->directory = $directory;
     }
 
+    public function getDirectory(): string
+    {
+        return $this->directory;
+    }
+
     private function parseFiles()
     {
         if (empty($this->directory)) {

@@ -5,7 +5,7 @@ Gephart Configuration
 
 Dependencies
 ---
- - PHP >= 7.0
+ - PHP >= 7.1
 
 Instalation
 ---

@@ -2,11 +2,30 @@
 
 namespace Gephart\Configuration;
 
+/**
+ * Configration
+ *
+ * @package Gephart\Configuration
+ * @author Michal Katuščák <michal@katuscak.cz>
+ * @since 0.2
+ */
 final class Configuration
 {
+    /**
+     * @var string
+     */
     private $directory;
+
+    /**
+     * @var array
+     */
     private $configuration;
 
+    /**
+     * @param string $key
+     * @return mixed
+     * @throws \Exception
+     */
     public function get(string $key)
     {
         if (empty($this->configuration)) {
@@ -20,6 +39,10 @@ final class Configuration
         return $this->configuration[$key];
     }
 
+    /**
+     * @param string $directory
+     * @throws \Exception
+     */
     public function setDirectory(string $directory)
     {
         if (!is_dir($directory)) {
@@ -29,11 +52,17 @@ final class Configuration
         $this->directory = $directory;
     }
 
+    /**
+     * @return string
+     */
     public function getDirectory(): string
     {
         return $this->directory;
     }
 
+    /**
+     * @throws \Exception
+     */
     private function parseFiles()
     {
         if (empty($this->directory)) {
@@ -45,6 +74,10 @@ final class Configuration
         $this->configuration = $configuration;
     }
 
+    /**
+     * @param array $files
+     * @return array
+     */
     private function loadJsonFiles(array $files = []): array
     {
         if ($handle = opendir($this->directory)) {
@@ -58,6 +91,10 @@ final class Configuration
         return $files;
     }
 
+    /**
+     * @param array $jsons
+     * @return array
+     */
     private function parseJsonFiles(array $jsons = []): array
     {
         foreach ($jsons as $key => $json) {

@@ -2,8 +2,10 @@
 
 namespace Gephart\Configuration;
 
+use Gephart\Configuration\Exception\ConfigurationException;
+
 /**
- * Configration
+ * Configuration
  *
  * @package Gephart\Configuration
  * @author Michal Katuščák <michal@katuscak.cz>
@@ -22,9 +24,12 @@ final class Configuration
     private $configuration;
 
     /**
+     * @since 0.4 Now throw \Gephart\Configuration\Exception\ConfigurationException
+     * @since 0.2
+     *
      * @param string $key
      * @return mixed
-     * @throws \Exception
+     * @throws ConfigurationException
      */
     public function get(string $key)
     {
@@ -33,20 +38,23 @@ final class Configuration
         }
 
         if (empty($this->configuration[$key])) {
-            throw new \Exception("Configuration: '$key' missing in configuration.");
+            throw new ConfigurationException("'$key' missing in configuration.");
         }
 
         return $this->configuration[$key];
     }
 
     /**
+     * @since 0.4 Now throw \Gephart\Configuration\Exception\ConfigurationException
+     * @since 0.2
+     *
      * @param string $directory
-     * @throws \Exception
+     * @throws ConfigurationException
      */
     public function setDirectory(string $directory)
     {
         if (!is_dir($directory)) {
-            throw new \Exception("Configuration: '$directory' is not directory.");
+            throw new ConfigurationException("'$directory' is not directory.");
         }
 
         $this->directory = $directory;
@@ -61,12 +69,15 @@ final class Configuration
     }
 
     /**
-     * @throws \Exception
+     * @since 0.4 Now throw \Gephart\Configuration\Exception\ConfigurationException
+     * @since 0.2
+     *
+     * @throws ConfigurationException
      */
     private function parseFiles()
     {
         if (empty($this->directory)) {
-            throw new \Exception("Configuration: Base directory is not set.");
+            throw new ConfigurationException("Base directory of configuration is not set.");
         }
 
         $jsons = $this->loadJsonFiles();

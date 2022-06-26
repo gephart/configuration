@@ -93,7 +93,9 @@ final class Configuration
      */
     private function loadJsonFiles(array $files = []): array
     {
-        if ($handle = opendir($this->directory)) {
+        $handle = opendir($this->directory);
+
+        if ($handle) {
             while (false !== ($entry = readdir($handle))) {
                 $path = explode(".", $entry);
                 if (!empty($path[1]) && $path[1] == "json") {
@@ -101,6 +103,7 @@ final class Configuration
                 }
             }
         }
+
         return $files;
     }
 

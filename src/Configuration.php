@@ -19,7 +19,7 @@ final class Configuration
     private $directory;
 
     /**
-     * @var array
+     * @var array<string, mixed>
      */
     private $configuration;
 
@@ -28,8 +28,8 @@ final class Configuration
      * @since 0.2
      *
      * @param string $key
-     * @return mixed
      * @throws ConfigurationException
+     * @return mixed
      */
     public function get(string $key)
     {
@@ -50,6 +50,7 @@ final class Configuration
      *
      * @param string $directory
      * @throws ConfigurationException
+     * @return void
      */
     public function setDirectory(string $directory)
     {
@@ -73,6 +74,7 @@ final class Configuration
      * @since 0.2
      *
      * @throws ConfigurationException
+     * @return void
      */
     private function parseFiles()
     {
@@ -86,8 +88,8 @@ final class Configuration
     }
 
     /**
-     * @param array $files
-     * @return array
+     * @param array<string|false> $files
+     * @return array<string|false>
      */
     private function loadJsonFiles(array $files = []): array
     {
@@ -103,8 +105,8 @@ final class Configuration
     }
 
     /**
-     * @param array $jsons
-     * @return array
+     * @param array<mixed> $jsons
+     * @return array<mixed>
      */
     private function parseJsonFiles(array $jsons = []): array
     {

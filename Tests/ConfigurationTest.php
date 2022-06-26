@@ -15,11 +15,10 @@ class ConfigurationTest extends TestCase
         $this->assertEquals("value22", $test_configuration["key2"]["key22"]);
     }
 
-    /**
-     * @expectedException Gephart\Configuration\Exception\ConfigurationException
-     */
     public function testConfigrationException()
     {
+        $this->expectException(Gephart\Configuration\Exception\ConfigurationException::class);
+
         $configuration = new \Gephart\Configuration\Configuration();
         $test_configuration = $configuration->get("test");
     }

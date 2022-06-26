@@ -1,7 +1,7 @@
 Gephart Configuration
 ===
 
-[![Build Status](https://travis-ci.org/gephart/configuration.svg?branch=master)](https://travis-ci.org/gephart/configuration)
+[![php](https://github.com/gephart/configuration/actions/workflows/php.yml/badge.svg?branch=master)](https://github.com/gephart/configuration/actions)
 
 Dependencies
 ---
